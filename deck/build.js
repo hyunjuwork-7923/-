@@ -28,28 +28,28 @@ circ(s, 9.0, 0.6, 3.8, C.accent1, "빛-외곽", 85);
 circ(s, 9.6, 1.2, 2.6, C.accent1, "빛-중간", 70);
 circ(s, 10.2, 1.8, 1.4, C.accent1, "빛-중심", 0);
 T(s, "리드온 독서클럽 · 4주 프로그램 기획안", { x: 0.8, y: 1.1, w: 8, h: 0.4, fontSize: 16, bold: true, color: C.accent1 });
-s.addText("읽고, 보고, 맛보고, 나누다", { placeholder: "title" });
-T(s, "《스페인 미술 500년: 빛과 어둠의 연대기》와 함께하는 4주", { x: 0.8, y: 3.6, w: 8.2, h: 0.5, fontSize: 20, color: C.background1 });
+s.addText("책 두 권 읽고, 전시 보러 가는 한 달", { placeholder: "title" });
+T(s, "전시 《스페인 미술 500년: 빛과 어둠의 연대기》 · 4주", { x: 0.8, y: 3.6, w: 8.2, h: 0.5, fontSize: 20, color: C.background1 });
 T(s, "예술의전당 한가람디자인미술관 · 2026.9.22 – 2027.1.20", { x: 0.8, y: 4.2, w: 8.2, h: 0.4, fontSize: 14, color: C.background2 });
 T(s, "운영 장소  서울 서초구 남부순환로315길 85 · 정원 10명", { x: 0.8, y: 4.6, w: 8.2, h: 0.35, fontSize: 14, color: C.background2 });
-const wk = [["1", "책 읽기", "거장 입문"], ["2", "책 읽기", "역사 맥락"], ["3", "전시 관람", "현장 미션"], ["4", "티타임·피드백", "맛보고 나누기"]];
+const wk = [["1", "책 읽기", "화가 익히기"], ["2", "책 읽기", "역사 배경"], ["3", "전시 관람", "한가람 2시간"], ["4", "티타임·피드백", "먹으며 후기"]];
 wk.forEach((w, i) => {
   const x = 0.8 + i * 3.0;
   circ(s, x, 5.5, 0.85, i === 2 ? C.accent2 : C.accent1, "주차-원" + (i + 1));
   T(s, w[0], { x, y: 5.5, w: 0.85, h: 0.85, fontSize: 28, bold: true, color: i === 2 ? C.background1 : C.text1, align: "center", valign: "middle" });
   T(s, [{ text: w[1], options: { bold: true, fontSize: 16, color: C.background1, breakLine: true } }, { text: w[2], options: { fontSize: 14, color: C.background2 } }], { x: x + 1.05, y: 5.55, w: 1.85, h: 0.8, valign: "middle" });
 });
-s.addNotes("표지. 읽고(1~2주) → 보고(3주) → 맛보고 나누는(4주) 구조를 한 장으로 보여줍니다. 전시 기간은 예술의전당 공식 안내로 최종 확인하세요.");
+s.addNotes("표지. 1~2주는 책, 3주는 전시, 4주는 티타임입니다. 전시 기간은 예술의전당 공식 안내로 최종 확인하세요.");
 
 // ---------- Slide 3 ----------
 pres.addSection({ title: "커리큘럼" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "커리큘럼" });
 s.addText("4주 커리큘럼: 책 2주 → 전시 1주 → 나눔 1주", { placeholder: "title" });
 const wkc = [
-  ["1", "1주차 · 책", "거장들과 먼저 친해지기", "《나는 스페인 미술관의 도슨트입니다》 이안", "체크인 10분 → 화가별 발제 40분 → ‘그림 한 장 천천히 읽기’ 40분", "키워드 카드 3장"],
-  ["2", "2주차 · 책", "‘빛과 어둠’의 역사 읽기", "《스페인, 역사와 미술을 보다》 김영욱", "가톨릭·이슬람 맥락 토론 → 시대 구분 지도 → 관람 위시리스트 → 미션 안내", "관람 위시 3점"],
-  ["3", "3주차 · 전시", "전시장에서 만나다", "예술의전당 한가람디자인미술관", "도슨트 시간대 입장 → 미션 카드 관람 → 로비 3분 공유", "나의 한 점 + 한 줄 제목"],
-  ["4", "4주차 · 나눔", "맛보고 나누다", "스페인 티타임 + 피드백", "미니 도슨트 5분 → 티타임 → 피드백(KPT) → 다음 기수 제안", "후기 한 줄 + 제안"]];
+  ["1", "1주차 · 책", "화가 세 명 얼굴부터 익히기", "《나는 스페인 미술관의 도슨트입니다》 이안", "체크인 10분 → 화가별 발제 40분 → ‘그림 한 장 천천히 읽기’ 40분", "키워드 카드 3장"],
+  ["2", "2주차 · 책", "가톨릭과 이슬람, 그림에 남은 흔적", "《스페인, 역사와 미술을 보다》 김영욱", "가톨릭·이슬람 맥락 토론 → 시대 구분 지도 → 관람 위시리스트 → 미션 안내", "관람 위시 3점"],
+  ["3", "3주차 · 전시", "한가람디자인미술관에서 2시간", "예술의전당 한가람디자인미술관", "도슨트 시간대 입장 → 미션 카드 관람 → 로비 3분 공유", "나의 한 점 + 한 줄 제목"],
+  ["4", "4주차 · 나눔", "추로스 먹으면서 후기 말하기", "스페인 티타임 + 피드백", "미니 도슨트 5분 → 티타임 → 피드백(KPT) → 다음 기수 제안", "후기 한 줄 + 제안"]];
 wkc.forEach((w, i) => {
   const col = i % 2, row = Math.floor(i / 2);
   const x = 0.6 + col * 6.15, y = 1.45 + row * 2.7;
@@ -68,7 +68,7 @@ s.addNotes("교재: 1주차 《나는 스페인 미술관의 도슨트입니다�
 // ---------- Slide 4 ----------
 pres.addSection({ title: "3-4주차" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "3-4주차" });
-s.addText("클라이맥스 3·4주차: 보고, 그리고 맛보며 나누기", { placeholder: "title" });
+s.addText("3·4주차: 전시 보고 와서 추로스 먹기", { placeholder: "title" });
 // left panel
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 1.4, w: 6.0, h: 3.95, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "3주차-패널" });
 T(s, "3주차  관람 설계 (120분)", { x: 0.9, y: 1.55, w: 5.4, h: 0.45, fontSize: 20, bold: true });
@@ -93,7 +93,7 @@ T(s, [{ text: "흐름  ", options: { bold: true, color: C.accent1 } }, { text: "
 T(s, "음식 반입·취식 가능 · 알레르기는 3주차에 조사", { x: 7.05, y: 4.7, w: 5.4, h: 0.3, fontSize: 12, color: C.background2 });
 // bottom callout
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 5.55, w: 12.15, h: 1.2, rectRadius: 0.12, fill: { color: C.accent2 }, line: { type: "none" }, objectName: "도슨트-배경" });
-T(s, "도슨트·전문가 토크, 가능합니다", { x: 0.9, y: 5.7, w: 3.0, h: 0.9, fontSize: 18, bold: true, color: C.background1, valign: "middle" });
+T(s, "도슨트나 전문가 토크는 이렇게 넣습니다", { x: 0.9, y: 5.7, w: 3.0, h: 0.9, fontSize: 18, bold: true, color: C.background1, valign: "middle" });
 T(s, [{ text: "① 전시장 도슨트 시간대에 맞춰 관람 (권장, 추가 비용 최소)", options: { breakLine: true } }, { text: "② 회원 ‘미니 도슨트’ 5분  ③ 외부 해설가 20분 토크 (예산 시)", options: {} }], { x: 4.1, y: 5.7, w: 8.4, h: 0.9, fontSize: 14, color: C.background1, valign: "middle" });
 s.addNotes("질문하신 도슨트/전문가 토크는 어렵지 않습니다. 가장 현실적인 안은 예술의전당 도슨트 운영 시간대를 확인해 3주차 관람 시간을 맞추는 것입니다. 음식은 전시 속 정물화·풍속화에서 실제로 발견한 음식으로 4주차 메뉴를 확정하면 전시와 자연스럽게 연결됩니다.");
 
@@ -101,7 +101,7 @@ s.addNotes("질문하신 도슨트/전문가 토크는 어렵지 않습니다. �
 // ---------- Slide 4 market ----------
 pres.addSection({ title: "시장분석" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "시장분석" });
-s.addText("시장분석: 시즌 멤버십과 원데이 사이의 빈 공간", { placeholder: "title" });
+s.addText("시장 비교: 시즌 모임 17만~40만 원, 원데이 1.8만~8만 원", { placeholder: "title" });
 const X0 = 1.2, Y0 = 5.1, PX = 0.36; // 축 원점, 1만 원당 높이
 const yv = (v) => Y0 - PX * v;
 [5, 10].forEach((v) => s.addShape(pres.shapes.LINE, { x: X0, y: yv(v), w: 6.8, h: 0, line: { color: C.background2, width: 1 }, objectName: "눈금선-" + v }));
@@ -118,14 +118,14 @@ lab("넷플연가 원데이", "1.8–8만", 1.3, 1.65, 1.8, "left");
 lab("전시 단독 관람", "1.4–2.3만", 2.9, 4.45, 1.6, "left");
 lab("넷플연가 정규", "4.3–5.8만", 3.9, 2.5, 1.65, "right");
 lab("트레바리", "6.3–10만", 5.3, 1.65, 1.6, "right");
-circ(s, 3.0, 3.36, 1.0, C.accent2, "빈공간-고리", 80);
+circ(s, 3.0, 3.36, 1.0, C.accent2, "가격대-고리", 80);
 circ(s, 3.2, 3.56, 0.6, C.accent2, "우리-점");
 lab("리드온 (우리)", "3.2–3.7만", 4.1, 3.62, 1.7, "left", C.accent2);
 T(s, "가격은 사용자 제공 자료 기준이며 공식 안내로 재확인이 필요합니다. 문토·소셜링 독서모임과 전시 연계 도슨트 모임은 가격을 확인하지 못했습니다. 막대는 회당 가격 범위입니다.", { x: 0.6, y: 5.95, w: 7.4, h: 0.6, fontSize: 12, color: C.text2 });
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 8.3, y: 1.45, w: 4.45, h: 5.05, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "우리의자리-배경" });
-T(s, "우리의 자리", { x: 8.6, y: 1.65, w: 3.9, h: 0.45, fontSize: 20, bold: true, color: C.background1 });
-[["포지션", "시즌 멤버십보다 가볍고, 원데이보다 깊은 중간 가격대"], ["빈 공간", "4주 완결 + 전시 연계 + 맛보는 경험"], ["타깃", "미술 입문 직장인 · 리드온 회원 · 혼자 보면 남는 게 적은 전시 애호가"]].forEach((r, i) => {
-  const y = 2.3 + i * 1.3;
+T(s, "우리 모임", { x: 8.6, y: 1.65, w: 3.9, h: 0.45, fontSize: 20, bold: true, color: C.background1 });
+[["가격", "4회에 12.9만~14.9만 원. 넷플연가 정규 하단(17만 원)보다 낮게 잡았다"], ["기간", "4개월 약정 없이 4주에 끝난다. 전시 관람료와 다과는 참가비에 포함한다"], ["대상", "미술은 처음인 직장인, 리드온 회원, 전시는 가는데 혼자 보면 남는 게 적다는 사람"]].forEach((r, i) => {
+  const y = 2.3 + i * 1.35;
   T(s, r[0], { x: 8.6, y, w: 3.9, h: 0.3, fontSize: 14, bold: true, color: C.accent1 });
   T(s, r[1], { x: 8.6, y: y + 0.33, w: 3.9, h: 0.8, fontSize: 14, color: C.background1 });
 });
@@ -134,7 +134,7 @@ s.addNotes("포지셔닝 맵: 가로축은 약정 기간·몰입 깊이, 세로�
 // ---------- Slide 5 pricing ----------
 pres.addSection({ title: "참가비" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "참가비" });
-s.addText("참가비 전략: 10명 한정, 정가 149,000원", { placeholder: "title" });
+s.addText("참가비: 129,000원부터, 10명까지", { placeholder: "title" });
 [["얼리버드", "129,000원", "회당 약 3.2만 원 · 마감 전 신청", false], ["정가", "149,000원", "회당 약 3.7만 원 · 10명 한정", true], ["별도", "책값", "도서 3권 개별 구입 · 3번째는 선택", false]].forEach((c, i) => {
   const x = 0.6 + i * 4.15;
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 1.45, w: 3.85, h: 1.85, rectRadius: 0.12, fill: { color: c[3] ? C.accent2 : C.background2 }, line: { type: "none" }, objectName: "가격카드-" + i });
