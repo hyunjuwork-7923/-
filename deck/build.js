@@ -31,40 +31,15 @@ T(s, "리드온 독서클럽 · 4주 프로그램 기획안", { x: 0.8, y: 1.1, 
 s.addText("읽고, 보고, 맛보고, 나누다", { placeholder: "title" });
 T(s, "《스페인 미술 500년: 빛과 어둠의 연대기》와 함께하는 4주", { x: 0.8, y: 3.6, w: 8.2, h: 0.5, fontSize: 20, color: C.background1 });
 T(s, "예술의전당 한가람디자인미술관 · 2026.9.22 – 2027.1.20", { x: 0.8, y: 4.2, w: 8.2, h: 0.4, fontSize: 14, color: C.background2 });
+T(s, "운영 장소  서울 서초구 남부순환로315길 85 · 정원 10명", { x: 0.8, y: 4.6, w: 8.2, h: 0.35, fontSize: 14, color: C.background2 });
 const wk = [["1", "책 읽기", "거장 입문"], ["2", "책 읽기", "역사 맥락"], ["3", "전시 관람", "현장 미션"], ["4", "티타임·피드백", "맛보고 나누기"]];
 wk.forEach((w, i) => {
   const x = 0.8 + i * 3.0;
-  circ(s, x, 5.1, 0.85, i === 2 ? C.accent2 : C.accent1, "주차-원" + (i + 1));
-  T(s, w[0], { x, y: 5.1, w: 0.85, h: 0.85, fontSize: 28, bold: true, color: i === 2 ? C.background1 : C.text1, align: "center", valign: "middle" });
-  T(s, [{ text: w[1], options: { bold: true, fontSize: 16, color: C.background1, breakLine: true } }, { text: w[2], options: { fontSize: 14, color: C.background2 } }], { x: x + 1.05, y: 5.15, w: 1.85, h: 0.8, valign: "middle" });
+  circ(s, x, 5.5, 0.85, i === 2 ? C.accent2 : C.accent1, "주차-원" + (i + 1));
+  T(s, w[0], { x, y: 5.5, w: 0.85, h: 0.85, fontSize: 28, bold: true, color: i === 2 ? C.background1 : C.text1, align: "center", valign: "middle" });
+  T(s, [{ text: w[1], options: { bold: true, fontSize: 16, color: C.background1, breakLine: true } }, { text: w[2], options: { fontSize: 14, color: C.background2 } }], { x: x + 1.05, y: 5.55, w: 1.85, h: 0.8, valign: "middle" });
 });
 s.addNotes("표지. 읽고(1~2주) → 보고(3주) → 맛보고 나누는(4주) 구조를 한 장으로 보여줍니다. 전시 기간은 예술의전당 공식 안내로 최종 확인하세요.");
-
-// ---------- Slide 2 ----------
-pres.addSection({ title: "설계" });
-s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "설계" });
-s.addText("전시가 기억에 남도록: 보기 전 · 보는 중 · 본 뒤", { placeholder: "title" });
-const cards = [["전", "1–2주차 · 보기 전", "책으로 지도 그리기", "스페인 미술 500년의 흐름을 책으로 잡고, 작가·시대 키워드 카드 5장으로 나만의 관람 지도를 만듭니다."],
-  ["중", "3주차 · 보는 중", "목적 있게 보기", "미션 카드 3장을 들고 관람합니다. ‘나의 한 점’을 정해 오래 보고, 한 줄 제목을 붙입니다."],
-  ["후", "4주차 · 본 뒤", "맛보고 나누기", "그림 속 음식과 차를 함께 맛보며 관람 후기를 나누고, 피드백으로 다음 기수를 설계합니다."]];
-cards.forEach((c, i) => {
-  const x = 0.6 + i * 4.15;
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 1.5, w: 3.85, h: 3.2, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "카드-" + c[0] });
-  circ(s, x + 0.3, 1.8, 0.75, i === 1 ? C.accent2 : C.text1, "카드원-" + c[0]);
-  T(s, c[0], { x: x + 0.3, y: 1.8, w: 0.75, h: 0.75, fontSize: 24, bold: true, color: C.background1, align: "center", valign: "middle" });
-  T(s, c[1], { x: x + 1.25, y: 1.85, w: 2.4, h: 0.3, fontSize: 14, bold: true, color: C.accent2 });
-  T(s, c[2], { x: x + 1.25, y: 2.17, w: 2.4, h: 0.4, fontSize: 20, bold: true });
-  T(s, c[3], { x: x + 0.3, y: 2.9, w: 3.25, h: 1.6, fontSize: 14, color: C.text2 });
-});
-s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 5.0, w: 12.15, h: 1.65, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "전시한눈에-배경" });
-T(s, "전시 한눈에", { x: 0.9, y: 5.3, w: 2.0, h: 0.4, fontSize: 16, bold: true, color: C.accent1 });
-T(s, "뉴욕 히스패닉 소사이어티 소장품 / 엘 그레코 · 벨라스케스 · 고야", { x: 0.9, y: 5.75, w: 2.6, h: 0.8, fontSize: 12, color: C.background2 });
-[["95점", "15–20세기 초 회화"], ["500년", "스페인 미술의 흐름"], ["3대 거장", "엘 그레코·벨라스케스·고야"], ["120분", "주 1회 모임 기준"]].forEach((st, i) => {
-  const x = 3.9 + i * 2.2;
-  T(s, st[0], { x, y: 5.3, w: 2.1, h: 0.6, fontSize: 30, bold: true, color: C.accent1 });
-  T(s, st[1], { x, y: 5.95, w: 2.1, h: 0.5, fontSize: 12, color: C.background1 });
-});
-s.addNotes("설계 원리: 미술 전시는 보고 나면 잊히기 쉬우므로 사전 지식(책) - 현장 목적(미션) - 사후 정리(나눔)를 한 흐름으로 묶었습니다. 전시 규모·작가 정보는 보도 및 예매처 정보 기준이므로 공식 안내로 확인하세요.");
 
 // ---------- Slide 3 ----------
 pres.addSection({ title: "커리큘럼" });
@@ -97,7 +72,7 @@ s.addText("클라이맥스 3·4주차: 보고, 그리고 맛보며 나누기", {
 // left panel
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 1.4, w: 6.0, h: 3.95, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "3주차-패널" });
 T(s, "3주차  관람 설계 (120분)", { x: 0.9, y: 1.55, w: 5.4, h: 0.45, fontSize: 20, bold: true });
-[["15분", "집결 · 오리엔테이션"], ["40분", "도슨트 투어 또는 오디오가이드"], ["50분", "자유 관람 + 미션 카드"], ["15분", "로비 공유 · 마무리"]].forEach((r, i) => {
+[["15분", "공간 집결 · 오리엔테이션(이동 포함)"], ["40분", "도슨트 투어 또는 오디오가이드"], ["50분", "자유 관람 + 미션 카드"], ["15분", "로비 공유 · 마무리"]].forEach((r, i) => {
   const y = 2.15 + i * 0.5;
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.9, y, w: 0.95, h: 0.38, rectRadius: 0.19, fill: { color: C.text1 }, line: { type: "none" }, objectName: "시간칩-" + i });
   T(s, r[0], { x: 0.9, y, w: 0.95, h: 0.38, fontSize: 14, bold: true, color: C.background1, align: "center", valign: "middle" });
@@ -115,34 +90,61 @@ T(s, "메뉴 후보 — 3주차 ‘그림 속 음식’에서 확정", { x: 7.05
   T(s, m, { x, y, w: 2.6, h: 0.45, fontSize: 14, bold: true, color: C.text1, align: "center", valign: "middle" });
 });
 T(s, [{ text: "흐름  ", options: { bold: true, color: C.accent1 } }, { text: "미니 도슨트 5분 → 티타임 30분 → 피드백(KPT) 40분 → 다음 기수 제안", options: { color: C.background1 } }], { x: 7.05, y: 3.9, w: 5.4, h: 0.65, fontSize: 14 });
-T(s, "알레르기·선호는 3주차에 미리 조사", { x: 7.05, y: 4.7, w: 5.4, h: 0.3, fontSize: 12, color: C.background2 });
+T(s, "음식 반입·취식 가능 · 알레르기는 3주차에 조사", { x: 7.05, y: 4.7, w: 5.4, h: 0.3, fontSize: 12, color: C.background2 });
 // bottom callout
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 5.55, w: 12.15, h: 1.2, rectRadius: 0.12, fill: { color: C.accent2 }, line: { type: "none" }, objectName: "도슨트-배경" });
 T(s, "도슨트·전문가 토크, 가능합니다", { x: 0.9, y: 5.7, w: 3.0, h: 0.9, fontSize: 18, bold: true, color: C.background1, valign: "middle" });
 T(s, [{ text: "① 전시장 도슨트 시간대에 맞춰 관람 (권장, 추가 비용 최소)", options: { breakLine: true } }, { text: "② 회원 ‘미니 도슨트’ 5분  ③ 외부 해설가 20분 토크 (예산 시)", options: {} }], { x: 4.1, y: 5.7, w: 8.4, h: 0.9, fontSize: 14, color: C.background1, valign: "middle" });
 s.addNotes("질문하신 도슨트/전문가 토크는 어렵지 않습니다. 가장 현실적인 안은 예술의전당 도슨트 운영 시간대를 확인해 3주차 관람 시간을 맞추는 것입니다. 음식은 전시 속 정물화·풍속화에서 실제로 발견한 음식으로 4주차 메뉴를 확정하면 전시와 자연스럽게 연결됩니다.");
 
-// ---------- Slide 5 ----------
-pres.addSection({ title: "검증" });
-s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "검증" });
-s.addText("기획 검증: 5개 페르소나 평균 9.5 / 10", { placeholder: "title" });
-s.addChart(pres.charts.BAR, [{ name: "점수", labels: ["미술 초보 참가자", "열성 독서가", "도슨트·큐레이터", "클럽 운영자", "예산·안전 담당"], values: [9.5, 9.4, 9.6, 9.5, 9.5] }],
-  { x: 0.6, y: 1.4, w: 5.9, h: 3.9, barDir: "bar", chartColors: ["A8322D"], showLegend: false, showTitle: false,
-    showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 14, dataLabelFontBold: true, dataLabelColor: "1C1714", dataLabelFontFace: "+mn-lt", dataLabelFormatCode: "0.0",
-    catAxisLabelFontSize: 14, catAxisLabelColor: "1C1714", catAxisLabelFontFace: "+mn-lt", catAxisOrientation: "maxMin",
-    valAxisHidden: true, valAxisMinVal: 0, valAxisMaxVal: 10.5, valGridLine: { style: "none" }, catGridLine: { style: "none" }, barGapWidthPct: 45 });
-const fx = [["초보 참가자", "주당 읽기 범위 분할 + 발췌독 허용"], ["독서가", "1·2주차 키워드 카드로 책↔작품 연결"], ["도슨트·큐레이터", "미션 카드로 ‘목적 있는 관람’"], ["클럽 운영자", "120분 시간표 + 미니 도슨트 역할 분담"], ["예산·안전", "단체 관람료·도슨트 시간 확인, 알레르기 조사"]];
-fx.forEach((f, i) => {
-  const y = 1.4 + i * 0.78;
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 6.9, y, w: 1.75, h: 0.62, rectRadius: 0.1, fill: { color: C.text1 }, line: { type: "none" }, objectName: "페르소나칩-" + i });
-  T(s, f[0], { x: 6.9, y, w: 1.75, h: 0.62, fontSize: 14, bold: true, color: C.background1, align: "center", valign: "middle" });
-  T(s, f[1], { x: 8.85, y, w: 3.9, h: 0.62, fontSize: 14, valign: "middle" });
-});
-s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 5.5, w: 12.15, h: 1.0, rectRadius: 0.12, fill: { color: C.accent1 }, line: { type: "none" }, objectName: "다음단계-배경" });
-T(s, "다음 단계", { x: 0.9, y: 5.5, w: 1.6, h: 1.0, fontSize: 18, bold: true, valign: "middle" });
-T(s, "① 모집·일정 확정  ② 도서 3권 확정  ③ 관람료·도슨트 시간 확인  ④ 4주차 메뉴·장소 확정", { x: 2.6, y: 5.5, w: 10.0, h: 1.0, fontSize: 14, bold: true, valign: "middle" });
-s.addNotes("점수는 AI가 5개 페르소나 관점에서 시뮬레이션한 자체 평가이며 실제 참가자 의견이 아닙니다. 1기 운영 후 실제 피드백으로 보정하세요.");
 
+// ---------- Slide 4 market ----------
+pres.addSection({ title: "시장분석" });
+s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "시장분석" });
+s.addText("시장분석: 시즌 멤버십과 원데이 사이의 빈 공간", { placeholder: "title" });
+const hd = (x) => ({ text: x, options: { bold: true, color: C.background1, fill: { color: C.text1 } } });
+const rw = (a, b, c, hi) => [a, b, c].map((x, i) => ({ text: x, options: { bold: hi || i === 0, color: hi ? C.background1 : C.text1, fill: { color: hi ? C.accent2 : C.background2 } } }));
+s.addTable([[hd("구분"), hd("가격 · 구성"), hd("회당")],
+  rw("트레바리", "25–40만 원 · 4회/4개월", "6.3–10만", false),
+  rw("넷플연가 정규", "17–23만 원 · 4회/3개월", "4.3–5.8만", false),
+  rw("넷플연가 원데이", "1.8–8만 원 · 1회", "1.8–8만", false),
+  rw("전시 단독 관람", "1.4–2.3만 원 · 해설 없음", "1회", false),
+  rw("리드온 (우리)", "12.9–14.9만 원 · 4회/4주", "3.2–3.7만", true)],
+  { x: 0.6, y: 1.45, w: 7.4, colW: [2.1, 3.6, 1.7], rowH: 0.62, fontSize: 14, border: { type: "solid", color: "FFFFFF", pt: 2 }, valign: "middle", margin: [0, 0.12, 0, 0.12] });
+T(s, "가격은 사용자 제공 자료 기준이며 공식 안내로 재확인이 필요합니다. 문토·소셜링 독서모임과 전시 연계 도슨트 모임은 가격을 확인하지 못했습니다.", { x: 0.6, y: 5.35, w: 7.4, h: 0.7, fontSize: 12, color: C.text2 });
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 8.3, y: 1.45, w: 4.45, h: 4.6, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "우리의자리-배경" });
+T(s, "우리의 자리", { x: 8.6, y: 1.65, w: 3.9, h: 0.45, fontSize: 20, bold: true, color: C.background1 });
+[["포지션", "시즌 멤버십보다 가볍고, 원데이보다 깊은 중간 가격대"], ["빈 공간", "4주 완결 + 전시 연계 + 맛보는 경험"], ["타깃", "미술 입문 직장인 · 리드온 회원 · 혼자 보면 남는 게 적은 전시 애호가"]].forEach((r, i) => {
+  const y = 2.3 + i * 1.2;
+  T(s, r[0], { x: 8.6, y, w: 3.9, h: 0.3, fontSize: 14, bold: true, color: C.accent1 });
+  T(s, r[1], { x: 8.6, y: y + 0.33, w: 3.9, h: 0.8, fontSize: 14, color: C.background1 });
+});
+s.addNotes("시장 지도: 시즌 구독형(트레바리), 호스트형 멤버십(넷플연가), 원데이, 전시 단독 관람. 우리는 4주 안에 끝나고 전시 관람과 다과가 포함된 중간 가격대입니다. 트레바리·넷플연가 가격은 사용자 제공 자료 기준입니다.");
+
+// ---------- Slide 5 pricing ----------
+pres.addSection({ title: "참가비" });
+s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "참가비" });
+s.addText("참가비 전략: 10명 한정, 정가 149,000원", { placeholder: "title" });
+[["얼리버드", "129,000원", "회당 약 3.2만 원 · 마감 전 신청", false], ["정가", "149,000원", "회당 약 3.7만 원 · 10명 한정", true], ["별도", "책값", "도서 3권 개별 구입 · 3번째는 선택", false]].forEach((c, i) => {
+  const x = 0.6 + i * 4.15;
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 1.45, w: 3.85, h: 1.85, rectRadius: 0.12, fill: { color: c[3] ? C.accent2 : C.background2 }, line: { type: "none" }, objectName: "가격카드-" + i });
+  T(s, c[0], { x: x + 0.3, y: 1.62, w: 3.3, h: 0.3, fontSize: 14, bold: true, color: c[3] ? C.background1 : C.accent2 });
+  T(s, c[1], { x: x + 0.3, y: 1.98, w: 3.3, h: 0.7, fontSize: 36, bold: true, color: c[3] ? C.background1 : C.text1 });
+  T(s, c[2], { x: x + 0.3, y: 2.78, w: 3.3, h: 0.35, fontSize: 14, color: c[3] ? C.background1 : C.text2 });
+});
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 3.55, w: 6.0, h: 3.1, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "수지-배경" });
+T(s, "10명 정가 기준 수지", { x: 0.9, y: 3.7, w: 5.4, h: 0.4, fontSize: 18, bold: true, color: C.background1 });
+[["수입", "1,490,000원"], ["비용", "580,000원"], ["남는 돈", "910,000원"]].forEach((r, i) => {
+  const y = 4.25 + i * 0.5;
+  T(s, r[0], { x: 0.9, y, w: 1.6, h: 0.4, fontSize: 14, color: C.background2, valign: "middle" });
+  T(s, r[1], { x: 2.5, y, w: 3.8, h: 0.4, fontSize: 22, bold: true, color: i === 2 ? C.accent1 : C.background1, valign: "middle" });
+});
+T(s, "비용: 관람료 23만 · 다과 12만 · 자료 3만 · 외부 해설 20만 (가정). 남는 돈은 진행자 보상·예비비. 최소 개설 8명", { x: 0.9, y: 5.8, w: 5.4, h: 0.75, fontSize: 12, color: C.background2 });
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 6.75, y: 3.55, w: 6.0, h: 3.1, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "운영-배경" });
+T(s, "운영 조건", { x: 7.05, y: 3.7, w: 5.4, h: 0.4, fontSize: 18, bold: true });
+const bl = (a, b, last) => [{ text: a + "  ", options: { bold: true, color: C.accent2, bullet: false } }, { text: b, options: { breakLine: !last } }];
+T(s, [].concat(bl("장소", "서초구 남부순환로315길 85 (무료 대관)"), bl("정원", "10명 · 음식 반입·취식 가능"), bl("포함", "관람료 · 다과 · 자료"), bl("환불", "1주차 전 전액 · 관람 이후 불가", true)), { x: 7.05, y: 4.25, w: 5.4, h: 2.2, fontSize: 14, paraSpaceAfter: 8 });
+s.addNotes("정원 10명이라 수입 상한이 정해져 있어 정가를 149,000원으로 두고, 얼리버드 129,000원으로 초기 모집을 유도합니다. 비용은 가정값이며 관람료 단체 할인 여부, 외부 해설 견적, 진행자 포함 여부를 확인해 갱신하세요.");
 (async () => {
   await pres.writeFile({ fileName: "readon_spain_art_club.pptx" });
   await applyTheme("readon_spain_art_club.pptx", THEME);
