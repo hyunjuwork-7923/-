@@ -1,6 +1,6 @@
 const pptxgen = require("pptxgenjs");
 const { applyTheme } = require("/root/.claude/skills/synced/b5915536-3fe3-4a22-9798-2179749b4aa4_c0048d07-4707-4906-bf38-1c686d3188cc/pptx/scripts/apply_theme.js");
-const FONT = "Malgun Gothic";
+const FONT = "Pretendard";
 const THEME = { name: "Spain Light and Dark", headFontFace: FONT, bodyFontFace: FONT,
   colors: { dk1:"1C1714", lt1:"FFFFFF", dk2:"3A2D26", lt2:"F4F0EA", accent1:"C8932B", accent2:"A8322D",
     accent3:"2E4A5A", accent4:"7C8A4A", accent5:"8C5A3C", accent6:"5B4B7A", hlink:"A8322D", folHlink:"5B4B7A" } };
