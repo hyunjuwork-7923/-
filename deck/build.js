@@ -45,25 +45,28 @@ s.addNotes("표지. 1~2주는 책, 3주는 전시, 4주는 티타임입니다. �
 pres.addSection({ title: "커리큘럼" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "커리큘럼" });
 s.addText("4주 커리큘럼: 책 2주 → 전시 1주 → 나눔 1주", { placeholder: "title" });
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 1.3, w: 12.15, h: 0.72, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "목표-배경" });
+T(s, "모임 목표", { x: 0.9, y: 1.3, w: 1.4, h: 0.72, fontSize: 14, bold: true, color: C.accent1, valign: "middle" });
+T(s, "한 달 뒤, 그림 한 점을 처음 보는 사람에게 3분 동안 자기 말로 해설한다", { x: 2.3, y: 1.3, w: 10.2, h: 0.72, fontSize: 18, bold: true, color: C.background1, valign: "middle" });
 const wkc = [
-  ["1", "1주차 · 책", "화가 세 명 얼굴부터 익히기", "《나는 스페인 미술관의 도슨트입니다》 이안", "체크인 10분 → 화가별 발제 40분 → ‘그림 한 장 천천히 읽기’ 40분", "키워드 카드 3장"],
-  ["2", "2주차 · 책", "가톨릭과 이슬람, 그림에 남은 흔적", "《스페인, 역사와 미술을 보다》 김영욱", "가톨릭·이슬람 맥락 토론 → 시대 구분 지도 → 관람 위시리스트 → 미션 안내", "관람 위시 3점"],
-  ["3", "3주차 · 전시", "한가람디자인미술관에서 2시간", "예술의전당 한가람디자인미술관", "도슨트 시간대 입장 → 미션 카드 관람 → 로비 3분 공유", "나의 한 점 + 한 줄 제목"],
-  ["4", "4주차 · 나눔", "추로스 먹으면서 후기 말하기", "스페인 티타임 + 피드백", "미니 도슨트 5분 → 티타임 → 피드백(KPT) → 다음 기수 제안", "후기 한 줄 + 제안"]];
+  ["1", "1주차 · 책 · 화가 세 명을 구분한다", "화가 세 명 얼굴부터 익히기", "《나는 스페인 미술관의 도슨트입니다》 이안", "체크인 10분 → 화가별 발제 40분 → ‘그림 한 장 천천히 읽기’ 40분", "키워드 카드 3장 (책에서 건진 화가·단어 메모)"],
+  ["2", "2주차 · 책 · 시대와 배경을 연결한다", "가톨릭과 이슬람, 그림에 남은 흔적", "《스페인, 역사와 미술을 보다》 김영욱", "가톨릭·이슬람 맥락 토론 → 시대 구분 지도 → 관람 위시리스트 → 미션 안내", "관람 위시 3점 (전시에서 꼭 볼 작품 3점)"],
+  ["3", "3주차 · 전시 · 실물 앞에서 내 눈으로 본다", "한가람디자인미술관에서 2시간", "예술의전당 한가람디자인미술관", "도슨트 시간대 입장 → 미션 카드 관람 → 로비 3분 공유", "나의 한 점 + 한 줄 제목"],
+  ["4", "4주차 · 나눔 · 한 점을 3분 해설한다", "추로스 먹으면서 후기 말하기", "스페인 티타임 + 피드백", "한 점 3분 해설 릴레이 → 티타임 → 피드백(KPT) → 다음 기수 제안", "내 한 점 3분 해설 + 후기 한 줄"]];
 wkc.forEach((w, i) => {
   const col = i % 2, row = Math.floor(i / 2);
-  const x = 0.6 + col * 6.15, y = 1.45 + row * 2.7;
+  const x = 0.6 + col * 6.15, y = 2.2 + row * 2.3;
   const hi = i === 2;
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 6.0, h: 2.5, rectRadius: 0.12, fill: { color: hi ? C.text1 : C.background2 }, line: { type: "none" }, objectName: "주차카드-" + w[0] });
-  circ(s, x + 0.25, y + 0.25, 0.7, hi ? C.accent1 : C.accent2, "주차원-" + w[0]);
-  T(s, w[0], { x: x + 0.25, y: y + 0.25, w: 0.7, h: 0.7, fontSize: 24, bold: true, color: hi ? C.text1 : C.background1, align: "center", valign: "middle" });
-  T(s, w[1], { x: x + 1.15, y: y + 0.2, w: 4.6, h: 0.3, fontSize: 14, bold: true, color: hi ? C.accent1 : C.accent2 });
-  T(s, w[2], { x: x + 1.15, y: y + 0.5, w: 4.6, h: 0.4, fontSize: 20, bold: true, color: hi ? C.background1 : C.text1 });
-  T(s, w[3], { x: x + 1.15, y: y + 0.95, w: 4.6, h: 0.3, fontSize: 14, color: hi ? C.background2 : C.text2 });
-  T(s, [{ text: "활동  ", options: { bold: true, color: hi ? C.accent1 : C.accent2 } }, { text: w[4], options: { color: hi ? C.background1 : C.text1 } }], { x: x + 0.25, y: y + 1.35, w: 5.5, h: 0.6, fontSize: 14 });
-  T(s, [{ text: "산출물  ", options: { bold: true, color: hi ? C.accent1 : C.accent2 } }, { text: w[5], options: { color: hi ? C.background1 : C.text1 } }], { x: x + 0.25, y: y + 2.05, w: 5.5, h: 0.3, fontSize: 14 });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 6.0, h: 2.15, rectRadius: 0.12, fill: { color: hi ? C.text1 : C.background2 }, line: { type: "none" }, objectName: "주차카드-" + w[0] });
+  circ(s, x + 0.25, y + 0.2, 0.65, hi ? C.accent1 : C.accent2, "주차원-" + w[0]);
+  T(s, w[0], { x: x + 0.25, y: y + 0.2, w: 0.65, h: 0.65, fontSize: 24, bold: true, color: hi ? C.text1 : C.background1, align: "center", valign: "middle" });
+  T(s, w[1], { x: x + 1.15, y: y + 0.15, w: 4.7, h: 0.3, fontSize: 14, bold: true, color: hi ? C.accent1 : C.accent2 });
+  T(s, w[2], { x: x + 1.15, y: y + 0.45, w: 4.7, h: 0.4, fontSize: 20, bold: true, color: hi ? C.background1 : C.text1 });
+  T(s, w[3], { x: x + 1.15, y: y + 0.9, w: 4.7, h: 0.3, fontSize: 14, color: hi ? C.background2 : C.text2 });
+  T(s, [{ text: "활동  ", options: { bold: true, color: hi ? C.accent1 : C.accent2 } }, { text: w[4], options: { color: hi ? C.background1 : C.text1 } }], { x: x + 0.25, y: y + 1.2, w: 5.5, h: 0.55, fontSize: 14 });
+  T(s, [{ text: "산출물  ", options: { bold: true, color: hi ? C.accent1 : C.accent2 } }, { text: w[5], options: { color: hi ? C.background1 : C.text1 } }], { x: x + 0.25, y: y + 1.78, w: 5.5, h: 0.3, fontSize: 14 });
 });
-s.addNotes("교재: 1주차 《나는 스페인 미술관의 도슨트입니다》(이안), 2주차 《스페인, 역사와 미술을 보다》(김영욱). 심화 선택 《프라도 미술관에서 꼭 봐야 할 그림 100》(김영숙)은 벨라스케스·고야를 더 보고 싶은 참가자용입니다. 도서 정보는 사용자 제공 기준이며 분량은 확인 후 발췌독을 허용합니다. 1주차 약 120분: 체크인 10 - 발제 40 - 그림 읽기 40 - 정리 30.");
+s.addNotes("목표 설계: 4주(모임 8시간)로 ‘준전문가’까지는 어렵고, ‘처음 보는 사람 앞에서 그림 한 점을 3분 해설’이 현실적인 최종 도달점입니다. 주차별로 알아본다 → 연결한다 → 직접 본다 → 설명한다 순으로 깊어집니다. 1주차 시작과 4주차 끝에 5점 척도 자기평가 3문항(화가 구분, 시대 순서 설명, 한 점 3분 해설)을 받아 전후를 비교하세요. 교재: 1주차 《나는 스페인 미술관의 도슨트입니다》(이안), 2주차 《스페인, 역사와 미술을 보다》(김영욱). 심화 선택 《프라도 미술관에서 꼭 봐야 할 그림 100》(김영숙)은 벨라스케스·고야를 더 보고 싶은 참가자용입니다. 도서 정보는 사용자 제공 기준이며 분량은 확인 후 발췌독을 허용합니다. 1주차 약 120분: 체크인 10 - 발제 40 - 그림 읽기 40 - 정리 30.");
 
 // ---------- Slide 4 ----------
 pres.addSection({ title: "3-4주차" });
@@ -89,12 +92,12 @@ T(s, "메뉴 후보 — 3주차 ‘그림 속 음식’에서 확정", { x: 7.05
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 2.6, h: 0.45, rectRadius: 0.22, fill: { color: C.accent1 }, line: { type: "none" }, objectName: "메뉴칩-" + i });
   T(s, m, { x, y, w: 2.6, h: 0.45, fontSize: 14, bold: true, color: C.text1, align: "center", valign: "middle" });
 });
-T(s, [{ text: "흐름  ", options: { bold: true, color: C.accent1 } }, { text: "미니 도슨트 5분 → 티타임 30분 → 피드백(KPT) 40분 → 다음 기수 제안", options: { color: C.background1 } }], { x: 7.05, y: 3.9, w: 5.4, h: 0.65, fontSize: 14 });
+T(s, [{ text: "흐름  ", options: { bold: true, color: C.accent1 } }, { text: "한 점 3분 해설 릴레이 → 티타임 → 피드백(KPT) → 다음 기수 제안", options: { color: C.background1 } }], { x: 7.05, y: 3.9, w: 5.4, h: 0.65, fontSize: 14 });
 T(s, "음식 반입·취식 가능 · 알레르기는 3주차에 조사", { x: 7.05, y: 4.7, w: 5.4, h: 0.3, fontSize: 12, color: C.background2 });
 // bottom callout
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 5.55, w: 12.15, h: 1.2, rectRadius: 0.12, fill: { color: C.accent2 }, line: { type: "none" }, objectName: "도슨트-배경" });
 T(s, "도슨트나 전문가 토크는 이렇게 넣습니다", { x: 0.9, y: 5.7, w: 3.0, h: 0.9, fontSize: 18, bold: true, color: C.background1, valign: "middle" });
-T(s, [{ text: "① 전시장 도슨트 시간대에 맞춰 관람 (권장, 추가 비용 최소)", options: { breakLine: true } }, { text: "② 회원 ‘미니 도슨트’ 5분  ③ 외부 해설가 20분 토크 (예산 시)", options: {} }], { x: 4.1, y: 5.7, w: 8.4, h: 0.9, fontSize: 14, color: C.background1, valign: "middle" });
+T(s, [{ text: "① 전시장 도슨트 시간대에 맞춰 관람 (권장, 추가 비용 최소)", options: { breakLine: true } }, { text: "② 4주차에 회원 전원이 한 점씩 3분 해설  ③ 외부 해설가 20분 토크 (예산 시)", options: {} }], { x: 4.1, y: 5.7, w: 8.4, h: 0.9, fontSize: 14, color: C.background1, valign: "middle" });
 s.addNotes("질문하신 도슨트/전문가 토크는 어렵지 않습니다. 가장 현실적인 안은 예술의전당 도슨트 운영 시간대를 확인해 3주차 관람 시간을 맞추는 것입니다. 음식은 전시 속 정물화·풍속화에서 실제로 발견한 음식으로 4주차 메뉴를 확정하면 전시와 자연스럽게 연결됩니다.");
 
 
