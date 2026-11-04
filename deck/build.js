@@ -102,24 +102,34 @@ s.addNotes("질문하신 도슨트/전문가 토크는 어렵지 않습니다. �
 pres.addSection({ title: "시장분석" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "시장분석" });
 s.addText("시장분석: 시즌 멤버십과 원데이 사이의 빈 공간", { placeholder: "title" });
-const hd = (x) => ({ text: x, options: { bold: true, color: C.background1, fill: { color: C.text1 } } });
-const rw = (a, b, c, hi) => [a, b, c].map((x, i) => ({ text: x, options: { bold: hi || i === 0, color: hi ? C.background1 : C.text1, fill: { color: hi ? C.accent2 : C.background2 } } }));
-s.addTable([[hd("구분"), hd("가격 · 구성"), hd("회당")],
-  rw("트레바리", "25–40만 원 · 4회/4개월", "6.3–10만", false),
-  rw("넷플연가 정규", "17–23만 원 · 4회/3개월", "4.3–5.8만", false),
-  rw("넷플연가 원데이", "1.8–8만 원 · 1회", "1.8–8만", false),
-  rw("전시 단독 관람", "1.4–2.3만 원 · 해설 없음", "1회", false),
-  rw("리드온 (우리)", "12.9–14.9만 원 · 4회/4주", "3.2–3.7만", true)],
-  { x: 0.6, y: 1.45, w: 7.4, colW: [2.1, 3.6, 1.7], rowH: 0.62, fontSize: 14, border: { type: "solid", color: "FFFFFF", pt: 2 }, valign: "middle", margin: [0, 0.12, 0, 0.12] });
-T(s, "가격은 사용자 제공 자료 기준이며 공식 안내로 재확인이 필요합니다. 문토·소셜링 독서모임과 전시 연계 도슨트 모임은 가격을 확인하지 못했습니다.", { x: 0.6, y: 5.35, w: 7.4, h: 0.7, fontSize: 12, color: C.text2 });
-s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 8.3, y: 1.45, w: 4.45, h: 4.6, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "우리의자리-배경" });
+const X0 = 1.2, Y0 = 5.1, PX = 0.36; // 축 원점, 1만 원당 높이
+const yv = (v) => Y0 - PX * v;
+[5, 10].forEach((v) => s.addShape(pres.shapes.LINE, { x: X0, y: yv(v), w: 6.8, h: 0, line: { color: C.background2, width: 1 }, objectName: "눈금선-" + v }));
+s.addShape(pres.shapes.LINE, { x: X0, y: 1.5, w: 0, h: Y0 - 1.5, line: { color: C.text2, width: 1.25 }, objectName: "세로축" });
+s.addShape(pres.shapes.LINE, { x: X0, y: Y0, w: 6.8, h: 0, line: { color: C.text2, width: 1.25 }, objectName: "가로축" });
+[[0, "0"], [5, "5만"], [10, "10만"]].forEach((r) => T(s, r[1], { x: 0.55, y: yv(r[0]) - 0.15, w: 0.55, h: 0.3, fontSize: 12, color: C.text2, align: "right", valign: "middle" }));
+T(s, "회당 가격", { x: 0.6, y: 1.2, w: 1.5, h: 0.25, fontSize: 12, bold: true, color: C.text2 });
+[["1회", 2.1], ["4주", 3.5], ["3개월", 5.7], ["4개월", 7.3]].forEach((r) => T(s, r[0], { x: r[1] - 0.5, y: Y0 + 0.08, w: 1.0, h: 0.28, fontSize: 12, color: C.text2, align: "center" }));
+T(s, "약정 기간 · 몰입 깊이 →", { x: 4.5, y: Y0 + 0.42, w: 3.5, h: 0.28, fontSize: 12, bold: true, color: C.text2, align: "right" });
+const cap = (cx, lo, hi, name) => { const y = yv(hi), h = Math.max(yv(lo) - yv(hi), 0.3); s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: cx - 0.25, y, w: 0.5, h, rectRadius: 0.25, fill: { color: C.accent3 }, line: { type: "none" }, objectName: "범위-" + name }); };
+cap(1.7, 1.8, 8, "원데이"); cap(2.5, 1.4, 2.3, "전시"); cap(5.7, 4.3, 5.8, "정규"); cap(7.3, 6.3, 10, "트레바리");
+const lab = (name, sub, x, y, w, al, col) => T(s, [{ text: name, options: { bold: true, fontSize: 14, color: col || C.text1, breakLine: true } }, { text: sub, options: { fontSize: 12, color: col || C.text2 } }], { x, y, w, h: 0.5, align: al });
+lab("넷플연가 원데이", "1.8–8만", 1.3, 1.65, 1.8, "left");
+lab("전시 단독 관람", "1.4–2.3만", 2.9, 4.45, 1.6, "left");
+lab("넷플연가 정규", "4.3–5.8만", 3.9, 2.5, 1.65, "right");
+lab("트레바리", "6.3–10만", 5.3, 1.65, 1.6, "right");
+circ(s, 3.0, 3.36, 1.0, C.accent2, "빈공간-고리", 80);
+circ(s, 3.2, 3.56, 0.6, C.accent2, "우리-점");
+lab("리드온 (우리)", "3.2–3.7만", 4.1, 3.62, 1.7, "left", C.accent2);
+T(s, "가격은 사용자 제공 자료 기준이며 공식 안내로 재확인이 필요합니다. 문토·소셜링 독서모임과 전시 연계 도슨트 모임은 가격을 확인하지 못했습니다. 막대는 회당 가격 범위입니다.", { x: 0.6, y: 5.95, w: 7.4, h: 0.6, fontSize: 12, color: C.text2 });
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 8.3, y: 1.45, w: 4.45, h: 5.05, rectRadius: 0.12, fill: { color: C.text1 }, line: { type: "none" }, objectName: "우리의자리-배경" });
 T(s, "우리의 자리", { x: 8.6, y: 1.65, w: 3.9, h: 0.45, fontSize: 20, bold: true, color: C.background1 });
 [["포지션", "시즌 멤버십보다 가볍고, 원데이보다 깊은 중간 가격대"], ["빈 공간", "4주 완결 + 전시 연계 + 맛보는 경험"], ["타깃", "미술 입문 직장인 · 리드온 회원 · 혼자 보면 남는 게 적은 전시 애호가"]].forEach((r, i) => {
-  const y = 2.3 + i * 1.2;
+  const y = 2.3 + i * 1.3;
   T(s, r[0], { x: 8.6, y, w: 3.9, h: 0.3, fontSize: 14, bold: true, color: C.accent1 });
   T(s, r[1], { x: 8.6, y: y + 0.33, w: 3.9, h: 0.8, fontSize: 14, color: C.background1 });
 });
-s.addNotes("시장 지도: 시즌 구독형(트레바리), 호스트형 멤버십(넷플연가), 원데이, 전시 단독 관람. 우리는 4주 안에 끝나고 전시 관람과 다과가 포함된 중간 가격대입니다. 트레바리·넷플연가 가격은 사용자 제공 자료 기준입니다.");
+s.addNotes("포지셔닝 맵: 가로축은 약정 기간·몰입 깊이, 세로축은 회당 가격(막대는 범위)입니다. 시장 지도: 시즌 구독형(트레바리), 호스트형 멤버십(넷플연가), 원데이, 전시 단독 관람. 우리는 4주 안에 끝나고 전시 관람과 다과가 포함된 중간 가격대입니다. 트레바리·넷플연가 가격은 사용자 제공 자료 기준입니다.");
 
 // ---------- Slide 5 pricing ----------
 pres.addSection({ title: "참가비" });
