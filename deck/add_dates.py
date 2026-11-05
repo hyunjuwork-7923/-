@@ -19,11 +19,11 @@ def tb(slide, x, y, w, h, t, size, color, align, name):
     rPr = r._r.get_or_add_rPr(); latin = rPr.find(qn("a:latin"))
     for i, tag in enumerate(("a:ea", "a:cs")):
         e = etree.Element(qn(tag)); e.set("typeface", FONT); latin.addnext(e) if i == 0 else rPr.find(qn("a:ea")).addnext(e)
-dates = ["11/18", "12/2", "12/16", "12/30"]
+dates = ["11/18", "12/2", "12/19", "12/30"]
 # 1번: 표지 4개 원 위
 s1 = prs.slides[0]
 for i, d in enumerate(dates):
-    label = d + " (수)" + (" 16:00" if i == 2 else "")
+    label = d + (" (토)" if i == 2 else " (수)")
     tb(s1, 0.8 + i * 3.0, 5.1, 2.8, 0.3, label, 14, TC.ACCENT_1, PP_ALIGN.LEFT, f"표지-날짜-{i}")
 # 2번: 카드 번호 원 아래
 s2 = prs.slides[1]
@@ -33,6 +33,6 @@ for i, d in enumerate(dates):
     tb(s2, x + 0.12, y + 0.88, 0.95, 0.28, d, 14, TC.ACCENT_1 if i == 2 else TC.ACCENT_2, PP_ALIGN.CENTER, f"커리큘럼-날짜-{i}")
 # 3번: 패널 제목 오른쪽
 s3 = prs.slides[2]
-tb(s3, 4.0, 1.55, 2.3, 0.45, "12/16 (수) 16:00", 14, TC.ACCENT_2, PP_ALIGN.RIGHT, "3주차-날짜")
+tb(s3, 4.0, 1.55, 2.3, 0.45, "12/19 (토)", 14, TC.ACCENT_2, PP_ALIGN.RIGHT, "3주차-날짜")
 tb(s3, 11.0, 1.55, 1.45, 0.45, "12/30 (수)", 14, TC.ACCENT_1, PP_ALIGN.RIGHT, "4주차-날짜")
 prs.save(sys.argv[2]); print("saved")
