@@ -35,4 +35,8 @@ for i, d in enumerate(dates):
 s3 = prs.slides[2]
 tb(s3, 4.0, 1.55, 2.3, 0.45, "12/19 (토)", 14, TC.ACCENT_2, PP_ALIGN.RIGHT, "3주차-날짜")
 tb(s3, 11.0, 1.55, 1.45, 0.45, "12/30 (수)", 14, TC.ACCENT_1, PP_ALIGN.RIGHT, "4주차-날짜")
+# 4번: 대상 문구 (요청에 따라 수정)
+for sh in prs.slides[3].shapes:
+    if sh.has_text_frame and "리드온 회원" in sh.text_frame.text:
+        sh.text_frame.paragraphs[0].runs[0].text = "서초 인근 직장인 중 미술은 처음이거나, "
 prs.save(sys.argv[2]); print("saved")
